@@ -14,9 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
 from blog import views
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/$',views.index),
@@ -25,6 +27,12 @@ urlpatterns = [
     url(r'^info/$',views.info),
     url(r'^infopic/$',views.infopic),
     url(r'^list/$',views.list),
-    url(r'^share/$',views.share)
+    url(r'^share/$',views.share),
+    url(r'^getdata/$',views.getdata),
+    
+    #在blog里边新建了一个urls，这里关联一下，以后我们就在blog里边写了
+    url(r'^api/',include('blog.urls',namespace='blog'))
+    
+    
 ]
 urlpatterns += staticfiles_urlpatterns()

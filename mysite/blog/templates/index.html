@@ -9,9 +9,10 @@
 <link href="/static/css/base.css" rel="stylesheet">
 <link href="/static/css/index.css" rel="stylesheet">
 <link href="/static/css/m.css" rel="stylesheet">
-<script src="/static/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/hc-sticky.js"></script>
 <script type="text/javascript" src="/static/js/comm.js"></script>
+
 <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
 <![endif]-->
@@ -99,8 +100,8 @@
   </aside>
   <div class="r_box">
     <li><i><a href="/"><img src="/static/images/1.jpg"></a></i>
-      <h3><a href="/">你是什么人便会遇上什么人</a></h3>
-      <p>有时就为了一句狠话，像心头一口毒钉，永远麻�着亲密感情交流。恶言，真要慎出，平日多�心爱语，乃最简易之�施。</p>
+      <h3><a id= "first_title" href="/">你是什么人便会遇上什么人</a></h3>
+      <p id = "first_content">有时就为了一句狠话，像心头一口毒钉，永远麻�着亲密感情交流。恶言，真要慎出，平日多�心爱语，乃最简易之�施。</p>
     </li>
     <li><i><a href="/"><img src="/static/images/2.jpg"></a></i>
       <h3><a href="/">爱情没有永远，地老天荒也走不完</a></h3>
@@ -190,30 +191,20 @@
 
 <script>
 	$(function(){
- //
- //        $.ajax({
- //  8           url : "http://localhost:8080/star/loginCheck/",
- //  9           type : "POST",
- // 10           contentType: "application/json;charset=utf-8",
- // 11           data : JSON.stringify({'name':name,'passwd':passwd}),
- // 12           dataType : "text",
- // 13           success : function(result) {
- // 14             if (result == "success") {
- // 15               obj.parents('form').submit();
- // 16             } else {
- // 17             }
- // 18           },
- // 19           error:function(msg){
- // 20             $(".notice").html('Error:'+msg);
- // 21           }
- // 22         })
- //
- //
- //
- //
- //
- //
- // 	})
+
+ 		$.get('http://127.0.0.1:8000/api/get_common_data/',function(response){
+	 
+           // $('#dg').datagrid("reload");
+           //
+           // $.messager.alert("<lable style='color : #fff'>提示信息</lable>", response.data[1].title);
+		   
+		   
+		   $("#first_title").html(response.data[0].title)
+		   $("#first_content").html(response.data[0].content)
+		   
+         });
+ 
+	 })
 </script>
 
 	

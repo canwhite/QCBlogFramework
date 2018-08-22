@@ -2,10 +2,18 @@ from django.db import models
 
 # Create your models here.
 
-class BlogsPost(models.Model):
-    title = models.CharField(max_length = 150)#博客标题
-    body = models.TextField()#博客正文
-    timestamp = models.DateTimeField()#创建时间
+
+class CommonData(models.Model):
+    
+    
+    title = models.CharField(max_length = 200)
+    
+    content = models.TextField()
+    
+    time = models.DateTimeField(auto_now = True)
+    
+
+
 
 
 
